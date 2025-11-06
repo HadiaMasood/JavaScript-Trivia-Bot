@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="bot.css" />
+  <title>Trivia Bot</title>
+</head>
+<body>
+    <script src="bot.js"></script>
+  <div class="container">
+    <h1>JavaScript Trivia Bot 🤖</h1>
+    <div class="box1" id="output"></div>
+  </div>
+
+ 
+  <button onclick="Start()">Start Trivia</button>
+
+
+
+  <script>
+    // Bot info
+    const botName = "hadia";
+    const botLocation = "pakistan";
+    const favoriteLanguage = "HTML";
+
+    function Start() {
+      const messages = [
+        "Hello! I'm your coding fun fact guide!",
+        `My name is ${botName} and I live on ${botLocation}.`,
+        `My favorite programming language is ${favoriteLanguage}.`,
+        `${favoriteLanguage} is the standard markup language for creating web pages.`,
+        `${favoriteLanguage} describes the structure of a web page semantically.`,
+        `${favoriteLanguage} elements are the building blocks of every website.`,
+        `It was fun sharing these facts with you. Goodbye! - ${botName} from ${botLocation}.`
+      ];
+
+      const output = document.getElementById("output");
+      output.innerHTML = ""; // clear previous messages
+      let index = 0;
+
+      const showMessage = () => {
+        if (index < messages.length) {
+          const p = document.createElement("p");
+          p.textContent = messages[index];
+          output.appendChild(p);
+          index++;
+          setTimeout(showMessage, 1000);
+        }
+      };
+
+      showMessage();
+    }
+  </script>
+</body>
+</html>
