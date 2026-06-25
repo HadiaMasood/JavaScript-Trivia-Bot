@@ -1,26 +1,37 @@
-function Start() {
-  // Bot details
-  var botName = "hadia";
-  var botLocation = "pakistan";
-  var favoriteLanguage = "HTML";
+const botName = "hadia";
+const botLocation = "pakistan";
+const favoriteLanguage = "HTML";
 
-  // Greeting message
-  console.log("Hello! I'm your coding fun fact guide!");
+const messages = [
+  "Hello! I'm your coding fun fact guide!",
+  `My name is ${botName} and I live in ${botLocation}.`,
+  `My favorite programming language is ${favoriteLanguage}.`,
+  `${favoriteLanguage} is the standard markup language for creating web pages.`,
+  `${favoriteLanguage} describes the structure of a web page semantically.`,
+  `${favoriteLanguage} elements are the building blocks of every website.`,
+  `It was fun sharing these facts with you. Goodbye! - ${botName} from ${botLocation}.`
+];
 
-  // Introduce the bot
-  console.log("My name is " + botName + " and I live on " + botLocation + ".");
-  console.log("My favorite programming language is " + favoriteLanguage + ".");
+function startTrivia() {
+  const output = document.getElementById("output");
+  output.innerHTML = "";
 
-  // Fun facts
-  let codingFact = favoriteLanguage + " is the standard markup language for documents designed to be displayed in a web browser.";
-  console.log(codingFact);
+  let index = 0;
 
-  codingFact = favoriteLanguage + " describes the structure of a web page semantically and originally included cues for its appearance.";
-  console.log(codingFact);
+  function showMessage() {
+    if (index >= messages.length) {
+      return;
+    }
 
-  codingFact = favoriteLanguage + " elements are the building blocks of HTML pages.";
-  console.log(codingFact);
+    const paragraph = document.createElement("p");
+    paragraph.textContent = messages[index];
+    output.appendChild(paragraph);
+    index += 1;
 
-  // Farewell message
-  console.log("It was fun sharing these facts with you. Goodbye! - " + botName + " from " + botLocation + ".");
+    setTimeout(showMessage, 1000);
+  }
+
+  showMessage();
 }
+
+document.getElementById("startButton").addEventListener("click", startTrivia);
