@@ -34,4 +34,10 @@ function startTrivia() {
   showMessage();
 }
 
-document.getElementById("startButton").addEventListener("click", startTrivia);
+document.addEventListener("DOMContentLoaded", () => {
+  const startButton = document.getElementById("startButton");
+
+  if (startButton) {
+    startButton.addEventListener("click", startTrivia);
+  }
+});
